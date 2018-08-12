@@ -17,6 +17,14 @@ Matrícula: 20170068974
 
 O framework consiste de uma simples janela (usando as ferramentas GLUT/OpenGL), duas constantes, `IMAGE_WIDTH` e `IMAGE_HEIGHT`, respectivamente, a largura e altura da janela e, por fim, um ponteiro para simulação de uma região de memória de vídeo. Esta memória está disposta de forma linear, 1 byte por cor, 4 cores por pixel (RGBA), de coordenadas (0, 0) a (IMAGE_WIDTH - 1, IMAGE_HEIGHT - 1). Especificamente, o objetivo do trabalho é proporcionar ao aluno/programador a experiência de manipular diretamente o *output* do vídeo e aplicar suas habilidades de rasterização.
 
+
+<p align="center">
+	<br>
+	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/images/colorbuffer.png"/ width=439px height=337px>
+	<h5 align="center">Ilustração do funcionamento da memória de vídeo. Fonte: Material fornecido pelo discente.</h5>
+	<br>
+</p>
+
 <br>
 
 ---
@@ -46,7 +54,7 @@ O Projeto possui uma hierarquia de estruturas "primitivas" usados nas chamadas d
 
 <p align="center">
 	<br>
-	<img src="https://github.com/ThiagoLuizNunes/CG-Assignments/raw/master/cg_framework/prints/bresenhamGeneralization.png"/ width=310px height=340px>
+	<img src="https://github.com/ThiagoLuizNunes/CG-Assignments/raw/master/cg_framework/prints/bresenhamGeneralization.png"/ width=310px height=310px>
 	<h5 align="center">Sistema horário de octantes/quadrantes.</h5>
 	<br>
 </p>
@@ -58,8 +66,10 @@ Nesse projeto, foi escolhida a segunda abordagem:
 1. Primeiro, transformamos os quadrantes 2, 3 e 4 completos de modo a equivaler ao primeiro.
 * 2º quadrante (3º e 4º octantes): Multiplica-se os valores do eixo-x por -1.
 * 3º quadrante (5º e 6º octantes): Multiplica-se os valores dos eixos x e y por -1.
-* 4º quadrante (7º e 8º octantes): Multiplica-se os valores do eixo-y por -1.<br>
-Considerando que a função `PutPixel(ColoredPoint)` não processa valores negativos, as transformações nos eixos são revertidas antes da chamada da função. Dessa forma, é possível transformar facilmente os três mencionados quadrantes no primeiro e.<br>
+* 4º quadrante (7º e 8º octantes): Multiplica-se os valores do eixo-y por -1.
+
+Considerando que a função `PutPixel(ColoredPoint)` não processa valores negativos, as transformações nos eixos são revertidas antes da chamada da função. Dessa forma, é possível transformar facilmente os três mencionados quadrantes no primeiro.
+
 2. Resta, no entanto, transformar o 2º octante, que está no primeiro quadrante mas não é suportado pelo protótipo básico do algoritmo (pois possui angulo de 45º a 90º). Isso implica que os octantes 3, 6 e 7 também não são suportados, pois são esses os octantes que passam a ser equivalentes ao 2º. Portanto, basta transformar ou corrigir o 2º octante e todos os demais estarão prontos, desde que já tenha sido realizada a primeira transformação. Para isso, foi decidido fazer o uso de ponteiros, de modo que os eixos x e y são trocados (entre si).
 
 Essa abordagem (realizar transformações de modo a fazer todos os octantes equivalerem ao primeiro) permitiu a construção de um código razoavelmente sofisticado, mas enxuto e relativamente limpo de redundâncias<sup>[0]</sup>. Possibilita ainda uma excelente precisão e simetria em todos os octantes, devido a sua natureza replicativa:
@@ -88,7 +98,7 @@ Essa abordagem (realizar transformações de modo a fazer todos os octantes equi
 
 **Example_Triangle()**: Desenha um simples triângulo de posição e cores pré-definidos.
 
-**Example_Asterisk(int)**: Desenha uma espécie de asterisco em formato circular usando retas desenhadas do centro para fora. Quanto maior o argumento, maior a quantidade de retas. Note que o exemplo faz uma simples interpolação de cores no centro da circuferência (aumento gradativo e "descontrolado"<sup>[1]</sup> do componente verde da cor).
+**Example_Asterisk(int)**: Desenha uma espécie de asterisco em formato circular usando retas desenhadas do centro para fora. Quanto maior o argumento, maior a quantidade de retas. Note que o experimento faz uma simples interpolação de cores no centro da circuferência (aumento gradativo e "descontrolado"<sup>[1]</sup> da componente verde da cor).
 <p align="center">
 	<br>
 	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/images/asterisk-32.png"/ width=280px height=280px>
@@ -111,9 +121,9 @@ Essa abordagem (realizar transformações de modo a fazer todos os octantes equi
 ---
 
 ## Conclusão
-Os resultados dos experimentos mostram que a parte estética demonstra-se satisfatória, evidenciando excelente qualidade no que se refere à precisão, simetria e interpolação de cores.
+Os resultados dos experimentos mostram que a parte estética demonstra-se satisfatória, evidenciando excelente qualidade no que se refere à precisão, simetria e interpolação de cores. O código está organizado e com um número satisfatório de comentários, permitindo, portanto, o seu estudo e re-aproveitamento por quem possuir interesse.
 
-Como referência para os próximos projetos, pode-se destacar o maior cuidado ao usar e escrever códigos com ponteiros, tendo em vista a dificuldade inicial provocada pelo seu uso, bem como a natural dificuldade em documentar e explicar o funcionamento de técnicas que exploram fortemente seu uso.
+Como referência para os próximos projetos, pode-se sugerir um maior cuidado ao usar e escrever códigos com ponteiros, tendo em vista a dificuldade inicial provocada pelo seu uso, bem como a natural dificuldade em documentar e explicar o funcionamento de técnicas que exploram fortemente seu uso.
 
 <br><br>
 
