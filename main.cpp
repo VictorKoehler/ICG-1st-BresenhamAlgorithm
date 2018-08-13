@@ -9,19 +9,24 @@ void MyGlDraw(void)
 	//*************************************************************************
 	
 
-	// Preenche o background. Para cada valor no argumento, desenha uma reta de um ponto a outro.
-	// Example_Slide(ccount);
-	// ccount++;
+	// EXPERIMENTAL: Desenha e preenche um triângulo na tela.
+	// Example_FilledTriangle(ccount);
 
+
+	
+
+	// Preenche o background. Para cada valor no argumento, desenha uma reta de um ponto a outro.
+	Example_Slide(ccount);
 
 	// Desenha um triângulo pré-definido.
-	clear(0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
-	Example_Triangle((PI/(float)25)*ccount, (PI/(float)45)*ccount, (PI/(float)11)*ccount + 2);
-	ccount++;
-
+	Example_Triangle();
 
 	// Desenha uma espécie de asterisco. Quanto maior o argumento, maior a quantidade de retas.
-	//Example_Asterisk(256);
+	Example_Asterisk(256);
+	
+
+
+	ccount++;
 }
 
 //-----------------------------------------------------------------------------
