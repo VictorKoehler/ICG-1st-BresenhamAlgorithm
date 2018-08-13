@@ -15,11 +15,13 @@ void MyGlDraw(void)
 
 
 	// Desenha um triângulo pré-definido.
-	Example_Triangle();
+	clear(0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
+	Example_Triangle((PI/(float)25)*ccount, (PI/(float)45)*ccount, (PI/(float)11)*ccount + 2);
+	ccount++;
 
 
 	// Desenha uma espécie de asterisco. Quanto maior o argumento, maior a quantidade de retas.
-	Example_Asterisk(256);
+	//Example_Asterisk(256);
 }
 
 //-----------------------------------------------------------------------------
