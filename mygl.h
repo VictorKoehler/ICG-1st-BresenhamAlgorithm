@@ -106,12 +106,21 @@ void PutPixelAlpha(ColoredPoint cp)
 
 
 
-
+void DrawLineT(Line l, int fillTriangle, ColoredPoint TrianglePoint);
 
 /*
     Desenha uma linha na tela por meio do algoritmo de Bresenham.
 */
 void DrawLine(Line l)
+{
+    ColoredPoint t;
+    DrawLineT(l, 0, t);
+}
+
+/*
+    Desenha uma linha na tela por meio do algoritmo de Bresenham.
+*/
+void DrawLineT(Line l, int fillTriangle, ColoredPoint TrianglePoint)
 {
     // Usamos ponteiros para facilitar a troca de coordenadas/octantes/quadrantes.
     int *x0 = &l.p0.p.x,
@@ -213,6 +222,15 @@ void DrawLine(Line l)
 
         l.p0.p.x *= xmult; // Aplicamos as transformações nos eixos X-Y
         l.p0.p.y *= ymult;
+
+        if (fillTriangle)
+        {
+            Line nline;
+            nline.p0 = l.p0;
+            nline.p1 = TrianglePoint;
+            DrawLine(nline);
+        }
+
         PutPixel(l.p0);    // Desenhamos o pixel correspondente.
         l.p0.p.x *= xmult; // Desfazemos-as.
         l.p0.p.y *= ymult;
@@ -243,6 +261,28 @@ void DrawTriangle(Triangle t)
     l.p0 = t.a2;
     l.p1 = t.a0;
     DrawLine(l);
+}
+
+
+/*
+    Desenha um triângulo preenchido na tela.
+*/
+void DrawAndFillTriangle(Triangle t)
+{
+    // Para cada aresta, definimos uma reta entre os pontos e desenhamos sua linha.
+    Line l; // Variável auxiliar.
+
+    l.p0 = t.a0;
+    l.p1 = t.a1;
+    DrawLineT(l, 1, t.a2);
+
+    l.p0 = t.a1;
+    l.p1 = t.a2;
+    DrawLineT(l, 1, t.a0);
+    
+    l.p0 = t.a2;
+    l.p1 = t.a0;
+    DrawLineT(l, 1, t.a1);
 }
 
 
@@ -356,10 +396,8 @@ void Example_Slide(int delta)
     DrawLine(l1);
 }
 
-
-
 /*
-    Desenha um triângulo pré-definido.
+    Desenha um triângulo preenchido e animado.
 */
 void Example_Triangle()
 {
@@ -394,6 +432,77 @@ void Example_Triangle()
 	t.a2.p.y = IMAGE_HEIGHT - 10;
 
 	DrawTriangle(t);
+}
+
+
+
+
+
+int min(int i, int j)
+{
+    return i < j ? i : j;
+}
+
+int max(int i, int j)
+{
+    return i < j ? j : i;
+}
+
+
+void clear(int x0, int y0, int x1, int y1)
+{
+    int xi = min(x0, x1), xf = max(x0, x1), yi = min(y0, y1), yf = max(y0, y1);
+    ColoredPoint cp;
+    cp.c.r = cp.c.g = cp.c.b = 0;
+    for (cp.p.x = xi; cp.p.x <= xf; cp.p.x++)
+    {
+        for (cp.p.y = yi; cp.p.y <= yf; cp.p.y++)
+        {
+            PutPixel(cp);
+        }
+    }
+}
+
+/*
+    Desenha um triângulo preenchido e animado.
+*/
+void Example_FilledTriangle(int delta)
+{
+    float d1 = (PI/(float)25)*((float)delta), d2 = (PI/(float)45)*((float)delta), d3 = (PI/(float)11)*((float)delta) + 2;
+    // Desenhamos um simples triângulo.
+
+    clear(0, 0, IMAGE_WIDTH - 1, IMAGE_HEIGHT - 1);
+
+	Color e;
+	e.r = 255;
+	e.g = 0;
+	e.b = 0;
+	e.a = 255;
+
+	Color f;
+	f.r = 0;
+	f.g = 255;
+	f.b = 0;
+	f.a = 255;
+
+	Color c;
+	c.r = 0;
+	c.g = 0;
+	c.b = 255;
+	c.a = 255;
+	
+	Triangle t;
+	t.a0.c = c;
+	t.a1.c = f;
+	t.a2.c = e;
+	t.a0.p.x = (IMAGE_WIDTH / 4) + (int)(sin(d1) * (float)(4*IMAGE_HEIGHT / 16));
+	t.a0.p.y = 150 + (int)(cos(d1) * (float)(4*IMAGE_HEIGHT / 16));
+	t.a1.p.x = 120 + (int)(sin(d2) * (float)(4*IMAGE_HEIGHT / 16));
+	t.a1.p.y = IMAGE_HEIGHT - 200 + (int)(cos(d2) * (float)(4*IMAGE_HEIGHT / 16));
+	t.a2.p.x = IMAGE_WIDTH - 150 + (int)(sin(d3) * (float)(4*IMAGE_HEIGHT / 16));
+	t.a2.p.y = IMAGE_HEIGHT / 2 - 10 + (int)(sin(d3) * (float)(4*IMAGE_HEIGHT / 14));
+
+	DrawAndFillTriangle(t);
 }
 
 #endif // _MYGL_H_

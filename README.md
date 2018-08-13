@@ -109,10 +109,22 @@ Essa abordagem (realizar transformações de modo a fazer todos os octantes equi
 </p>
 
 **Example_Slide(int)**: Desenha um reta de uma extremidade a outra da tela, interpolando as cores vermelho, azul e verde. O seu parâmetro define qual reta será desenhada. Na imagem abaixo, a função é chamada e o parâmetro sempre incrementado por `void MyGlDraw(void)`, presente em _**main.cpp**_:
+
 <p align="center">
 	<br>
 	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/images/showezgif.gif"/ width=380px height=380px>
 	<h5 align="center">Experimentos Example_Slide, Example_Triangle e Example_Asterisk executados simultaneamente.</h5>
+	<br>
+</p>
+
+<br>
+
+**Atualizado 13 de agosto de 2018:**: Um novo experimento foi concebido, como parte do pedido de alguns colegas<sup>[2]</sup>, o qual contribuíram em ideias e soluções de bugs. Trata-se do preechimento de triângulos, bem como seu movimento. Para experimenta-lo, é necessário descomentar a linha 13 de **main.cpp**, bem como é recomendável comentar as linhas 19, 22 e 25 do mesmo arquivo.
+
+<p align="center">
+	<br>
+	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/test_filltrian/images/fill.gif"/ width=280px height=280px>
+	<h5 align="center">Experimento Example_FilledTriangle. (Houveram dificuldades na gravação do clipe)</h5>
 	<br>
 </p>
 
@@ -139,3 +151,4 @@ https://github.com/ThiagoLuizNunes/CG-Assignments
 
 0. _Se comparado ao método de re-escrita do algoritmo para cada octante._
 1. _A Função simplesmente aumenta a componente verde da cor a cada reta desenhada sem verificar a possibilidade da ocorrência de Integer Overflow. O Experimento Example_Slide com parâmetro 256 (imagem acima) exemplifica a ocorrência deste evento._
+2. _Pablo_
