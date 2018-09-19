@@ -2,7 +2,7 @@
 ---
 
 ## Introdução
-Este projeto aborda e implementa o processo de construção do pipeline gráfico, bem como a importação e rasterização de objetos utilizando-se do mesmo. Para tanto, é usado um framework modificado (https://raw.githubusercontent.com/VictorKoehler/ICG-1st-BresenhamAlgorithm) com base em um de fins didáticos disponibilizado por Christian Pagot, professor da Universidade Federal da Paraíba, da qual este trabalho se destina como complemento de nota da disciplina de Introdução à Computação Gráfica, período 2018.1.
+Este projeto aborda e implementa o processo de construção do pipeline gráfico, bem como a importação e rasterização de objetos utilizando-se do mesmo. Para tanto, é usado um framework modificado ( https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/Rasterizacao ) com base em um de fins didáticos disponibilizado por Christian Pagot, professor da Universidade Federal da Paraíba, da qual este trabalho se destina como complemento de nota da disciplina de Introdução à Computação Gráfica, período 2018.1.
 
 Discente: Victor José de Sousa Koehler
 
@@ -22,7 +22,7 @@ Assimp: http://assimp.org/
 ---
 
 ## O Projeto
-Este projeto é uma continuação do trabalho de desenvolvimento de um framework didático de rasterização. Detalhes de uso, implementação e documentação do mesmo não fazem parte do escopo deste trabalho. Para mais informações, visite: https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm
+Este projeto é uma continuação do trabalho de desenvolvimento de um framework didático de rasterização. Detalhes de uso, implementação e documentação do mesmo não fazem parte do escopo deste trabalho. Para mais informações, visite: https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/Rasterizacao
 
 <br /> <br />
 
@@ -38,6 +38,13 @@ Este projeto está dividido conceitualmente da seguinte forma:
 - objectmodel.h: Representa um objeto (modelo), contendo os vértices e a matriz Model.
 - examples.h: Contém os exemplos de implementação e importação.
 - opengl_test.cpp: Programa de testes para servir de comparação entre o Pipeline desenvolvido e o OpenGL. Possui um loader (ObjectModel) embutido.
+
+<p align="center">
+	<br>
+	<img src="images/cubo.png"/ >
+	<h5 align="center">Exemplo de carregamento de modelo.</h5>
+	<br>
+</p>
 
 <br /> <br />
 
@@ -62,6 +69,14 @@ Por fim, o arquivo examples.h contém diversos trechos de código, incluindo tes
 ---
 
 ## Detalhes e Especificação de Implementação
+
+<p align="center">
+	<br>
+	<img src="images/macaco.png"/ >
+	<h5 align="center">Exemplo de carregamento de modelo.</h5>
+	<br>
+</p>
+
 Para a fase de rasterização, faz-se uso de pipeline_extensions.h, que, assim como já mencionado acima, realiza a integração Pipeline <-> Framework.
 
 Neste arquivo, destacam-se duas funções a serem usadas: `drawSpace(Space)` e `drawFreezedPreComputedSpace(Scene)`. A Primeira percorre todos os vértices de todos os objetos e rasteriza-os logo após transforma-los através do Pipeline.
@@ -78,6 +93,11 @@ Como a classe atua como um espaço universal + câmera, os seguintes métodos mo
 - buildViewportMatrix: Recria a matriz Viewport, recebe o tamanho da tela (horizontal e vertical, respectivamente).
 - buildPipeline: Recria a matriz do Pipeline (sem Model). Necessário ser chamado depois de qualquer modificação nas matrizes anteriores. É simplesmente `pipeline = viewport * projection * view;`.
 
+
+<img src="images/view.png" />
+<img src="images/projection.png" />
+<img src="images/viewport.png" />
+<img src="images/pipeline.png" />
 
 <br /> <br />
 
