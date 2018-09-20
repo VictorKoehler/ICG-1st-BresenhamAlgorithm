@@ -139,6 +139,13 @@ e.buildPipeline();
 e.invalidateAllObjects();
 ```
 
+<p align="center">
+	<br>
+	<img src="images/macaco.gif"/ > <img src="images/esfera.gif"/ >
+	<h5 align="center">Animações</h5>
+	<br>
+</p>
+
 <br /> <br />
 
 ## Dificuldades Encontradas
