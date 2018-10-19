@@ -20,7 +20,7 @@ O framework consiste de uma simples janela (usando as ferramentas GLUT/OpenGL), 
 
 <p align="center">
 	<br>
-	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/images/colorbuffer.png"/ width=439px height=337px>
+	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/Rasterizacao/images/colorbuffer.png"/ width=439px height=337px>
 	<h5 align="center">Ilustração do funcionamento da memória de vídeo. Fonte: Material fornecido pelo discente.</h5>
 	<br>
 </p>
@@ -75,7 +75,7 @@ Considerando que a função `PutPixel(ColoredPoint)` não processa valores negat
 Essa abordagem (realizar transformações de modo a fazer todos os octantes equivalerem ao primeiro) permitiu a construção de um código razoavelmente sofisticado, mas enxuto e relativamente limpo de redundâncias<sup>[0]</sup>. Possibilita ainda uma excelente precisão e simetria em todos os octantes, devido a sua natureza replicativa:
 <p align="center">
 	<br>
-	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/images/asterisk-detail-64.png"/ width=420px height=420px>
+	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/Rasterizacao/images/asterisk-detail-64.png"/ width=420px height=420px>
 	<h5 align="center">Imagem em detalhe do experimento Example_Asterisk, evidênciando sua simetria. Zoom de 4x.</h5>
 	<br>
 </p>
@@ -84,7 +84,7 @@ Essa abordagem (realizar transformações de modo a fazer todos os octantes equi
 
 <p align="center">
 	<br>
-	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/images/triangle.png"/ >
+	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/Rasterizacao/images/triangle.png"/ >
 	<h5 align="center">Experimento Example_Triangle</h5>
 	<br>
 </p>
@@ -101,9 +101,9 @@ Essa abordagem (realizar transformações de modo a fazer todos os octantes equi
 **Example_Asterisk(int)**: Desenha uma espécie de asterisco em formato circular usando retas desenhadas do centro para fora. Quanto maior o argumento, maior a quantidade de retas. Note que o experimento faz uma simples interpolação de cores no centro da circuferência (aumento gradativo e "descontrolado"<sup>[1]</sup> da componente verde da cor).
 <p align="center">
 	<br>
-	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/images/asterisk-32.png"/ width=280px height=280px>
-	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/images/asterisk-64.png"/ width=280px height=280px>
-	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/images/asterisk-256.png"/ width=280px height=280px>
+	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/Rasterizacao/images/asterisk-32.png"/ width=280px height=280px>
+	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/Rasterizacao/images/asterisk-64.png"/ width=280px height=280px>
+	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/Rasterizacao/images/asterisk-256.png"/ width=280px height=280px>
 	<h5 align="center">Da esquerda para a direita, Example_Asterisk executado com parâmetros 32, 64 e 256, respectivamente. Simultaneamente, Example_Triangle desenhado "por baixo".</h5>
 	<br>
 </p>
@@ -112,7 +112,7 @@ Essa abordagem (realizar transformações de modo a fazer todos os octantes equi
 
 <p align="center">
 	<br>
-	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/images/showezgif.gif"/ width=380px height=380px>
+	<img src="https://github.com/VictorKoehler/ICG-1st-BresenhamAlgorithm/raw/master/Rasterizacao/images/showezgif.gif"/ width=380px height=380px>
 	<h5 align="center">Experimentos Example_Slide, Example_Triangle e Example_Asterisk executados simultaneamente.</h5>
 	<br>
 </p>
